@@ -1,5 +1,5 @@
 # Data-visualization
-Data Visualization and Statistics using Pandas
+Data Visualization and Statistics using Pandas.
 In this repository , I have used Pima Indians Diabetes Database as a csv file. This data-set is originally 
 from the National Institute of Diabetes and Digestive and Kidney Diseases. The objective is to 
 predict based on diagnostic measurements whether a patient has diabetes. Several constraints 
