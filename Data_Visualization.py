@@ -2,7 +2,7 @@
 """
 Created on Thu Dec  9 20:04:30 2021
 
-@author: Prashant
+@author: Prashant Kumar
 """
 
 import pandas as pd
@@ -12,20 +12,15 @@ df = pd.read_csv("pima-indians-diabetes.csv")
 #print(df.head())
 data = df.drop(['class'], axis = 1)
 #print(data.head())
-#_______________Question1
+#_______________Getting the Mean, median, mode, minimum, maximum and standard deviation of BMI
 print("Mean of BMI is %1.2f"%(data['BMI'].mean()))
 print("Mode of BMI is %1.2f"%(data['BMI'].mode()))
 print("Median of BMI is %1.2f"%(data['BMI'].median()))
 print("Maximum of BMI is %1.2f"%(data['BMI'].max()))
 print("Minimum of BMI is %1.2f"%(data['BMI'].min()))
 
-# plt1 = data.plot.scatter(x='Age',
-#                       y='BMI',
-#                       c='DarkBlue')
-# print(plt1)
 
-# print(data.columns)
-#_________________Question2
+#_________________Code for the scatter plot between age and all the other attribute
 attributesfr = ['pregs', 'plas', 'pres', 'skin','BMI', 'pedi']#ASSIGNING OUR ATTRIBUTES IN A LIST 
 fig,axs=plt.subplots(2,3,figsize=(16,12))  #PLOTTING  SUBPLOTS FOR OUR REQUIRED ATTRIBUTE
 a=0;b=0
@@ -41,20 +36,15 @@ for i in attributesfr: #LOOP IN ATTRIBUTES1 FOR OBTAINING EACH AND EVERY ATTRIBU
     
 plt.show()
 
-# for i in attributesfr:
-#     plt.title(i.capitalize() + " vs Age")
-#     plt.scatter(data['Age'], data[i],color = 'blue')
-#     plt.xlabel("Age")
-#     plt.ylabel(i.capitalize())
-#     plt.show()
 
-#_______________________Question3
+
+#_______________________The value of correlation coefficient
 #Correlation coefficent
 for i in attributesfr: 
      corr_age = np.corrcoef(data['Age'],data[i]) 
      print("correlation coefficient between Age and ",i,": %1.2f"%(corr_age[0,1]))
 
-#_________________________Quesion4
+#_________________________The histogram for the attributes ‘preg’ and ‘skin’ 
 df2 = pd.DataFrame({'preg': data['pregs'],'skin':data['skin']})
 print(df2.columns)
 plt2 = df2.hist(bins = 8)
@@ -63,10 +53,10 @@ print(plt2)
 df3 = df.groupby(['pregs','class'])
 print(df3.first())
 
-#___________________________Question5
+#___________________________The histogram of attribute ‘preg’ for each of the 2 classes individually
 df['pregs'].hist(by=df['class'])
 plt.show()
 
-#___________________________Question6
+#___________________________The boxplot for all the attribute excluding ‘class’ 
 bxplot = data.boxplot(attributesfr)
 print(bxplot)
